@@ -1,0 +1,32 @@
+
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <a class="nav-link" href="" routerLink="/Home/Menu">
+              <h3 style="float: right; width: 10%;">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+              </h3>
+              </a>
+            <div class="box-header with-border">
+              <h3 class="box-title">Ajouter Un Semestre</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Libelle</label>
+                  <input formControlName="libellesemestre" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter un Semestre">
+                </div>
+                
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          
+        

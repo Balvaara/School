@@ -1,0 +1,169 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h3><i class="fas fa-graduation-cap"></i>Liste Eleves</h3>
+        
+     
+          <div class="input-group">
+            <input type="text" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"  [(ngModel)]="term">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+ 
+          
+      
+    </div>
+    
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Matricule</th>  
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Date Naissance</th>
+              <th>Lieu De Naissance</th>
+              <th>Classe</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
+              
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+                <th>Matricule</th> 
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Date Naissance</th>
+                <th>Lieu De Naissance</th>
+                <th>Classe</th>
+                <th>Modifier</th>
+              <th>Supprimer</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr *ngFor="let eleve of allEleve | filter:term | paginate:{itemsPerPage:5,currentPage:p}">
+              <td>{{eleve.matricule}}</td>
+              <td>{{eleve.prenom}}</td>
+              <td>{{eleve.nom}}</td>
+              <td>{{eleve.dateness | date:'yyyy-MM-dd'}}</td>
+              <td>{{eleve.lieuness}}</td>
+              <td>{{eleve.myclasses.libclasse}}</td>
+              <td> <button  type="button" class="btn btn-outline-primary"  
+                (click)="editEleve(eleve.id)" data-toggle="modal" data-target="#exampleModalLong">
+                <i class="fa fa-pen fa-1x" style="color: #28d;"></i>
+                </button></td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" 
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="confirmClicked = Action(eleve.id)"
+                    (cancel)="cancelClicked = true"  >
+                    <i class="fa fa-trash fa-fw"></i>
+                    </button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card-footer pb-0 pt-3">
+          <pagination-controls (pageChange)="p=$event">
+                              
+          </pagination-controls>
+            </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div  class="modal fade" id="exampleModalLong" tabindex="2" 
+        role="dialog" aria-labelledby="exampleModalLongTitle"
+         aria-hidden="true" >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+             
+              </div>
+              <div class="modal-body" >
+              
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Modifier Un Eleve</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-row">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputEmail1">Id</label>
+                          <input formControlName="id" [value]="id" name="id" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Matricule</label>
+                            <input formControlName="matricule" name="matricule" [value]="matricule" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Nom">
+                        </div>
+                        </div>
+                <div class="form-group col-md-6">
+                  <label for="exampleInputEmail1">Prenom</label>
+                  <input formControlName="prenom" name="prenom" [value]="prenom" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Nom</label>
+                    <input formControlName="nom" [value]="nom" name="nom" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Nom">
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="exampleInputEmail1">Residence</label>
+                    <input formControlName="residence" name="residence" [value]="residence" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Libelle de la Residence">
+                </div>
+                <div class="form-group  col-md-6">
+                    <label for="exampleInputEmail1">Date De Naissance</label>
+                    <input formControlName="dateness" name="dateness" [value]="dateness | date:'yyyy-MM-dd'" type="Date" class="form-control" id="exampleInputEmail1" placeholder="Enter la Date De Naissance">
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="exampleInputEmail1">Lieu De Naissance</label>
+                    <input formControlName="lieuness" name="lieuness" [value]="lieuness" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Lieu De Naissance">
+                </div>
+                
+                <div class="form-group  col-md-6">
+                  <label>Classes</label>
+                  <select class="form-control" formControlName="cl" name="cl">
+                    <option value="" > {{cl.libclasse}}</option>
+                    <option *ngFor=" let cy of classes " value="{{cy.id}}">
+                 {{cy.libclasse}}
+                </option>
+                  </select>
+                </div>
+                </div>
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          
+        
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+              </div>
+            </div>
+          </div>
+        </div>

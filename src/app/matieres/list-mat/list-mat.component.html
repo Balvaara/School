@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Dashio - Bootstrap Admin Template</title>
+
+  <!-- Favicons -->
+
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+ 
+  
+        <h3><i class="fa fa-angle-right" ></i>Liste Matiere</h3>
+        <hr >
+        <div class="row" >
+          <div class="col-md-4 col-sm-4 mb" *ngFor="let mat of allMat | paginate:{itemsPerPage:6,currentPage:p}" >
+            <div class="grey-panel pn donut-chart" id="panel">
+              <div class="grey-header">
+                <h4 style="color: black;">{{mat.libelle}}</h4>
+              </div>
+           
+             <i class="fa fa-book fa-3x" style="color: #28d;"></i>
+             
+             <button  type="button" class="btn btn-outline-primary" style="width: 15%;float: right;" 
+              (click)="editMat(mat.id)" data-toggle="modal" data-target="#exampleModalLong">
+              <i class="fa fa-pen fa-1x" style="color: #28d;"></i>
+              </button><br>
+              <button type="button" class="btn btn-outline-danger" style="width: 15%;float: right;" 
+        mwlConfirmationPopover
+        [popoverTitle]="popoverTitle"
+        [popoverMessage]="popoverMessage"
+        placement="left"
+        (confirm)="confirmClicked = Action(mat.id)"
+        (cancel)="cancelClicked = true"  >
+          <i class="fa fa-trash fa-fw"></i>
+        
+      </button>
+             
+              <canvas id="serverstatus01" height="30" width="30"></canvas>
+              <script>
+                var doughnutData = [{
+                    value: 70,
+                    color: "#FF66B"
+                  },
+                  {
+                    value: 30,
+                    color: "#fdfdfd"
+                  }
+                ];
+                var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+              </script>
+                      <div class="col-sm-6 col-xs-6 goleft">
+                        <p style="color: black;">Coefficient:<b style="color: #28d;">{{mat.coef}}</b></p>
+                      </div>
+                
+             
+
+            </div>
+            <hr class="trait" >
+            
+       
+          </div>
+        
+     
+        </div>
+        <div class="card-footer pb-0 pt-3">
+          <pagination-controls (pageChange)="p=$event">
+                              
+          </pagination-controls>
+            </div>
+     
+
+      <div  class="modal fade" id="exampleModalLong" tabindex="2" 
+        role="dialog" aria-labelledby="exampleModalLongTitle"
+         aria-hidden="true" >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+             
+              </div>
+           
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Modifier Une Matiere</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">ID</label>
+                    <input formControlName="id" [value]="id" name="id" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Libelle">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Libelle</label>
+                  <input formControlName="libelle" [value]="libelle" name="libelle" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Libelle">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Coefficient</label>
+                    <input formControlName="coef" [value]="coef" name="coef" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Coefficient">
+                  </div>
+                
+                
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          
+        
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+   
+  
+
+</body>
+ <!-- js placed at the end of the document so the pages load faster -->
+ <script src="../../../assets/lib/jquery/jquery.min.js"></script>
+ <script src="../../../assets/lib/bootstrap/js/bootstrap.min.js"></script>
+ <script class="include" type="text/javascript" src="../../../assets/lib/jquery.dcjqaccordion.2.7.js"></script>
+ <script src="../../../assets/lib/jquery.scrollTo.min.js"></script>
+ <script src="../../../assets/lib/jquery.nicescroll.js" type="text/javascript"></script>
+ <script src="../../../assets/lib/jquery.sparkline.js"></script>
+ <!--common script for all pages-->
+ <script src="../../../assets/lib/common-scripts.js"></script>
+ <!--script for this page-->
+ <script src="../../../assets/lib/sparkline-chart.js"></script>
+</html>

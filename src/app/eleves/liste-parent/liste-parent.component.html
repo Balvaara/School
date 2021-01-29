@@ -1,0 +1,142 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h3><i class="fa fa-angle-right" ></i>Liste De Parrent  D'Eleves</h3>
+        
+     
+          <div class="input-group">
+            <input type="text" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"  [(ngModel)]="term">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+ 
+          
+      
+    </div>
+    
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>  
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Adresse</th>
+              <th>Telephone</th>
+              <th>Nombre d'eleves</th>
+              <th>Modifier</th>
+             
+              
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+                <th>ID</th> 
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Nombre d'eleves</th>
+                <th>Modifier</th>
+               
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr *ngFor="let parrent of allparrent | filter:term | paginate:{itemsPerPage:5,currentPage:p}">
+              <td>{{parrent.id}}</td>
+              <td>{{parrent.prenomP}}</td>
+              <td>{{parrent.nomP}}</td>
+              <td>{{parrent.adresse}}</td>
+              <td>{{parrent.tel}}</td>
+              <td>({{parrent.eleves.length}})</td>
+              <td> <button  type="button" class="btn btn-outline-primary"  
+                (click)="editParrent(parrent.id)" data-toggle="modal" data-target="#exampleModalLong">
+                <i class="fa fa-pen fa-1x" style="color: #28d;"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card-footer pb-0 pt-3">
+          <pagination-controls (pageChange)="p=$event">
+                              
+          </pagination-controls>
+            </div>
+      </div>
+    </div>
+  </div>
+
+   <div  class="modal fade" id="exampleModalLong" tabindex="2" 
+        role="dialog" aria-labelledby="exampleModalLongTitle"
+         aria-hidden="true" >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+             
+              </div>
+              <div class="modal-body" >
+              
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Modifier Un Eleve</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+               
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="exampleInputEmail1">Id</label>
+                          <input formControlName="id" [value]="id" name="id" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Prenom</label>
+                            <input formControlName="prenomP" name="prenomP" [value]="prenomP" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Nom">
+                        </div>
+                        </div>
+                 <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="exampleInputEmail1">Nom</label>
+                  <input formControlName="nomP" name="nomP" [value]="nomP" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Adresse</label>
+                    <input formControlName="adresse" [value]="adresse" name="adresse" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Nom">
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="exampleInputEmail1">Telephone</label>
+                    <input formControlName="tel" name="tel" [value]="tel" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Libelle de la Residence">
+                </div>
+                
+                </div>
+            
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          
+        
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+

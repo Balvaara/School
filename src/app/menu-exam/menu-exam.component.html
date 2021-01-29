@@ -1,0 +1,259 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Partie Examen</h1>
+  </div>
+
+  <div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Liste & Ajout</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                <a href=""routerLink="/Home/listSem">Semestre</a>
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href=""routerLink="/Home/AjoutSem">
+                <i class="fas fa-plus fa-2x text-primary"></i>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Liste & Ajout</div>
+              <div class="h5 mb-0 font-weight-bold text-success">
+                <a  class="h5 mb-0 font-weight-bold text-success" href=""routerLink="/Home/AjoutNote">Notes</a>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button  type="button" class="btn btn-outline-primary"  
+               data-toggle="modal" data-target="#exampleModalLong">
+                <i class="fas fa-book-open fa-2x text-success"></i>
+                </button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Imprimer</div>
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                    <p  clpss="h5 mb-0 font-weight-bold text-info">Bulttins</p>
+                  </div>
+                </div>
+                <!-- <div class="col">
+                  <div class="progress progress-sm mr-2">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href=""routerLink="/Home/bulttin">
+              <i class="fas fa-clipboard-list fa-2x text-info"></i>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-warning shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-comments fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div  class="modal fade" id="exampleModalLong" tabindex="2" 
+  role="dialog" aria-labelledby="exampleModalLongTitle"
+   aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Recherche</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+       
+        </div>
+        <div class="modal-body" >
+        
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-angle-right" ></i>Rechercher  Notes d'un  Eleve</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form role="form" [formGroup]="Form">
+        <div class="input-group">
+          <input type="text" class="form-control bg-light border-1 small" 
+          placeholder="Veuillez Saisir Le Matricule De L'eleve SVP" aria-label="Search"
+           aria-describedby="basic-addon2" formControlName="matricule">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="OnSub()" >
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>   
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      <section class="flex" *ngFor="let el of eleve" >
+                      
+        <dl>
+          <dt>Nom Complet</dt>
+          <dd>{{el.prenom}} {{el.nom}}</dd>
+          <dt>Matricule</dt>
+          <dd>{{el.matricule}}</dd>
+          <dt>Date De Naissance</dt>
+          <dd>{{el.dateness | date:'yyyy-MM-dd'}}</dd>
+          <dt>Classe</dt>
+          <dd>{{el.myclasses.libclasse}}</dd>
+        </dl>
+      </section>
+  <div class="container"  *ngIf="variable ">
+    <div class="card-body">
+      <div class="table-responsive">
+        
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              
+               
+              <th>Matiiere</th>
+              <th>Valeur</th> 
+              <th>Coeff</th>
+              <th>N*C</th>
+              <th>Semestre</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
+              
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+                
+                <th>Matiiere</th>
+                <th>Valeur</th> 
+                <th>Coeff</th>
+                <th>N*C</th>
+                <th>Semestre</th>
+                <th>Modifier</th>
+              <th>Supprimer</th>
+              
+            </tr>
+          </tfoot>
+          <tbody>
+            
+            <tr *ngFor="let note of allNote | paginate:{itemsPerPage:5,currentPage:p}">
+             
+              
+              <td>{{note.matieres.libelle}}</td>
+              <td>{{note.valeur}}</td>
+              <td>{{note.matieres.coef}}</td>
+              <td>{{note.matieres.coef*note.valeur}}</td>
+              <td>{{note.sems.libellesemestre}}</td>
+              <td> <button  type="button" class="btn btn-outline-primary"  
+                (click)="editNote(note.id)" data-toggle="modal" data-target="#logoutModal">
+                <i class="fa fa-pen fa-1x" style="color: #28d;"></i>
+                </button></td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" 
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="confirmClicked = Action(note.id)"
+                    (cancel)="cancelClicked = true"  >
+                    <i class="fa fa-trash fa-fw"></i>
+                    </button>
+                    </td>
+                 
+            </tr>
+            
+          </tbody>
+          
+        </table>
+        <div class="card-footer pb-0 pt-3">
+          <pagination-controls (pageChange)="p=$event">
+                              
+          </pagination-controls>
+            </div>
+            <a class="nav-link" href="" (click)="OnSub1()">
+              <h3 style="float: right; width: 10%;">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+              </h3>
+              </a>
+      </div>
+ 
+    </div>
+</div>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form role="form" [formGroup]="Form">
+          <div class="form-group col-md-6">
+            <label for="exampleInputEmail1">ID</label>
+            <input formControlName="id" [value]="id" name="id" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="exampleInputEmail1">Valeur</label>
+            <input formControlName="valeur" [value]="valeur" name="valeur" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal" >Cancel</button>
+          <button type="submit" class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>

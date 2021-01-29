@@ -1,0 +1,74 @@
+
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <a class="nav-link" href="" routerLink="/Home/Menu">
+              <h3 style="float: right; width: 10%;">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+              </h3>
+              </a>
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Ajouter Une Note</h3>
+            </div>
+            
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="exampleInputEmail1">Matricule</label>
+                  <input formControlName="matricule"name="matricule"   type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer Un Matricule">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Prenom</label>
+                    <input formControlName="prenom"name="prenom" [value]="prenom"   type="text" readonly class="form-control" id="exampleInputEmail1" placeholder="Nom">
+                  </div>
+                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Nom</label>
+                        <input formControlName="nom" name="nom" [value]="nom"  type="text" readonly class="form-control" id="exampleInputEmail1" placeholder="Prenom">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">valeur</label>
+                        <input formControlName="valeur"  name="valeur" type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer Une valeur">
+                    </div>
+                  </div>
+             
+                <div class="form-row">
+                  <div class="form-group  col-md-6">
+                    <label for="exampleInputEmail2">Appreciation</label>
+                    <input formControlName="appreciation" name="appreciation" [value]="appreciation" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Nom Du Parent">
+                </div>
+                   
+                    <div class="form-group  col-md-6">
+                        <label>Semestres</label>
+                        <select class="form-control" formControlName="sem" >
+                          <option value=""> ..Selectionnez un Semestre..</option>
+                          <option *ngFor=" let sem of allSem " value="{{sem.id}}">
+                            {{sem.libellesemestre}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group  col-md-6">
+                    <label>Matieres</label>
+                    <select class="form-control" formControlName="mat" >
+                      <option value=""> ..Selectionnez une Matiere..</option>
+                      <option *ngFor=" let mat of allMat " value="{{mat.id}}">
+                        {{mat.libelle}}</option>
+                    </select>
+                </div>
+                </div>
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+                  </div>
+              
+              </div>
+            </form>
+          </div>
+          
+        

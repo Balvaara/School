@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body >
+
+<div class="materialContainer">
+
+
+  <div class="box">
+    
+     <!-- <div class="title">LOGIN
+      <img src="../../../assets/img/usercre2.jpg" alt="">
+     </div> -->
+     <form class="user" [formGroup] = "formconnexion">
+      <div class="perspective-text">
+         <div class="perspective-line">
+           <p></p>
+           <p>Bievenue</p>
+         </div>
+         <div class="perspective-line">
+           <p>Bievenue</p>
+           <p>Cliquez ici</p>
+         </div>
+         <div class="perspective-line">
+           <p>Cliquez ici</p>
+           <p>Pour Vous</p>
+         </div>
+         <div class="perspective-line">
+           <p>Pour Vous</p>
+           <p>Connecte</p>
+         </div>
+         <div class="perspective-line">
+           <p>Connecte</p>
+           <p></p>
+           
+         </div>
+       </div>
+       <br><br><br><br>
+       <P class="dr">{{date |date:'yyyy-MM-dd H:mm:ss'}}</P>
+  <div class="overbox">
+     <div class="material-button alt-2"><span class="shape"></span></div>
+     
+     <div class="title">LOGIN</div>
+
+     <div class="input">
+        <label for="regname">Username</label>
+        <input type="text" name="regname" id="regname" formControlName="username">
+        <span class="spin"></span>
+     </div>
+
+     <div class="input">
+        <label for="regpass">Password</label>
+        <input type="password" name="regpass" id="regpass" formControlName="password">
+        <span class="spin"></span>
+     </div>
+
+     
+
+     <div class="button">
+         <button  type="submit" class="btn btn-primary btn-block btn-large" (click)="OnSub()">CONNEXION</button>
+     </div>
+
+    </div>
+  </form>
+    </div>
+  
+  
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Creer Une Cycle</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Libelle</label>
+                  <input formControlName="lib" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Cycle">
+                </div>
+                
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          
+        

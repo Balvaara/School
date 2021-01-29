@@ -1,0 +1,116 @@
+        <!-- general form elements -->
+          <div class="box box-primary">
+            <a class="nav-link" href="" routerLink="/Home/Menu">
+              <h3 style="float: right; width: 10%;">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+              </h3>
+              </a>
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Imprimer Un Bulttin</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="exampleInputEmail1">Matricule</label>
+                  <input formControlName="matricule" name="matricule" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter le Prenom">
+                </div>
+
+                <div class="form-group  col-md-6">
+                  <label>Semestres</label>
+                  <select class="form-control" formControlName="sem" >
+                    <option value=""> ..Selectionnez un Semestre..</option>
+                    <option *ngFor=" let semm of allsem " value="{{semm.id}}">
+                 {{semm.libellesemestre}}</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Rechercher</button>
+              </div>
+            </form>
+          </div>
+          <br>
+
+          <div class="container"  *ngIf="variable">
+            <fieldset align="center" >
+            <div id = " print-section " > 
+               
+                <section class="flex" *ngFor="let el of eleve" >
+                  
+                  <dl>
+                    <dt>Nom Complet</dt>
+                    <dd>{{el.prenom}} {{el.nom}}</dd>
+                    <dt>Matricule</dt>
+                    <dd>{{el.matricule}}</dd>
+                    <dt>Date De Naissance</dt>
+                    <dd>{{el.dateness | date:'yyyy-MM-dd'}}</dd>
+                    <dt>Classe</dt>
+                    <dd>{{el.myclasses.libclasse}}</dd>
+                  </dl>
+                </section>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      
+                      <table class="table table-bordered" id="dataTable" width="40%" cellspacing="1">
+                        <thead>
+                          <tr>
+                            
+                             
+                            <th>Matiiere</th>
+                            <th>Coeff</th>
+                            <th>Valeur</th> 
+                            <th>N*C</th>
+                            <th>Moy </th>
+                            
+                           
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          
+                          <tr *ngFor="let note of allNote" >
+                           
+                            
+                            <td>{{note.matieres.libelle}}</td>
+                            <td>{{note.matieres.coef}}</td>
+                            <td>{{note.valeur}}</td>
+                            <td>{{note.matieres.coef*note.valeur}}</td>
+                            <td>{{note.matieres.coef*note.valeur/note.matieres.coef}}</td>
+                          </tr>
+                          <th>Total</th>
+                          <td >{{sommeCoef}}</td>
+                          <td>{{somme}}</td>
+                          <td>{{sommeNC}}</td>
+                          <td>{{sommeMoy}}</td>
+
+                          <th>Moyenne</th>
+                          <td>{{moy}}</td>
+                          
+                        </tbody>
+                        
+                      </table>
+                  
+                          
+                    </div>
+               
+                  </div>
+         
+                <footer>
+                  <p> – Informatique − Développement WEB </p>
+                  <p>Ngaye Meckhe Angle RN:1 | <a href="mailto:lamine.mbaye0104@gmail.com">lamine.mbaye0104@gmail.com</a></p>
+                </footer>
+                </div>
+                <button printSectionId = " print-section " ngxPrint class="btn btn-outline-primary" >
+                  <span class="fas fa-fw fa-download"></span>
+                  Imprimer
+                 </button > 
+                </fieldset>     
+        </div>

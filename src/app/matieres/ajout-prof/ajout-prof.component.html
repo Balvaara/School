@@ -1,0 +1,54 @@
+
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Ajouter Un(e) Professeur(e)</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" [formGroup]="Form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Prenom</label>
+                  <input formControlName="prenom" type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer le Prenom">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nom</label>
+                    <input formControlName="nom" type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer le Nom">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Adresse</label>
+                    <input formControlName="adresse" type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer l'adresse">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Telephone</label>
+                    <input formControlName="tel" type="text" class="form-control" id="exampleInputEmail1" placeholder="+221.....">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Date De Naissance</label>
+                    <input formControlName="datenessiance" type="date" class="form-control" id="exampleInputEmail1" >
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Lieu De Naissance</label>
+                    <input formControlName="lieunessiance" type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer le Lieu De Naissance">
+                  </div>
+                  
+                <div class="form-group">
+                  <label>Matiere</label>
+                  <select class="form-control"  multiple=true formControlName="mat">
+                    <option value=""> choix..</option>
+                    <option  *ngFor=" let matt of allMat " value="{{matt.id}}" >
+                 {{matt.libelle}}</option>
+                  </select>
+                </div>
+                
+              </div>
+
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" (click)="OnSub()">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+          
+        
